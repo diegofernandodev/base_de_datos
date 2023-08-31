@@ -1,0 +1,118 @@
+
+COMANDOS SQL
+
+PARA INGRESAR A MYSQL XAMPP
+
+C/xampp/mysql/bin
+mysql -u root -h localhost -p
+
+++++++++++++++++++++++++++++++++++++++++++++++++DDL (Data Definition Language)+++++++++++++++++++++++++++++
+
+----------------------------------------------CONSULTAR LISTADO DE BASES DE DATOS
+SHOW DATABASES;
+
+----------------------------------------------CREAR UNA TABLA
+
+CREATE TABLE nombre_tabla (
+    columna1 tipo_dato,
+    columna2 tipo_dato,
+    ...
+    CONSTRAINT nombre_restriccion PRIMARY KEY (columna1)
+);
+
+----------------------------------------------CONSULTAR LISTADO DE TABLAS DENTRO DE UNA BASE DE DATOS
+SHOW TABLES;
+
+----------------------------------------------MODIFICAR UNA TABLAS(AGREGAR COLUMNAS)
+
+ALTER TABLE nombre_tabla
+ADD columna_nueva tipo_dato;
+
+----------------------------------------------MODIFICAR UNA TABLAS(ELIMINAR COLUMNAS)
+
+ALTER TABLE nombre_tabla
+DROP COLUMN columna_a_eliminar;
+
+----------------------------------------------MODIFICAR COLUMNAS DE UNA TABLA 
+
+ALTER TABLE nombre_tabla
+MODIFY COLUMN nombre_columna VARCHAR(100);
+
+Si la columna contiene valores numéricos que deseas convertir en cadenas, puedes ejecutar una actualización para realizar la conversión. Por ejemplo:
+UPDATE nombre_tabla
+SET nombre_columna = CAST(nombre_columna AS VARCHAR(100));
+
+---------------------------------------------MODIFICAR EL NOMBRE DE UNA TABLA
+
+ALTER TABLE nombre_tabla RENAME TO nuevo_nombre_tabla;
+
+
+---------------------------------------------MODIFICAR EL CAMPO DE UNA TABLA(COLUMNAS)
+
+ALTER TABLE nombre_tabla CHANGE nombre_columna nuevo_nombre_columna tipo_de_dato;
+
+hacer varios cambios a la vez:
+ALTER TABLE empleados
+CHANGE nombre nombre_completo VARCHAR(100),
+CHANGE apellido apellido_materno VARCHAR(100),
+CHANGE telefono num_telefono VARCHAR(20);
+
+
+----------------------------------------------AND Y OR EN CONDICIONES WHERE(SELECT, UPDATE, DELETE)
+
+SELECT * FROM personas
+WHERE nombre = 'Juan' AND edad > 25;
+
+SELECT * FROM personas
+WHERE nombre = 'Juan' OR edad > 25;
+
+
+----------------------------------------------ELIMINAR UNA TABLA
+
+DROP TABLE nombre_tabla;
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++DML (Data Manipulation Language)+++++++++++++++++++++++++++
+
+---------------------------------------------INSERTAR DATOS EN UNA TABLA
+
+INSERT INTO nombre_tabla (columna1, columna2, ...)
+VALUES (valor1, valor2, ...);
+
+---------------------------------------------ACTUALIZAR DATOS EN UNA TABLA
+
+UPDATE nombre_tabla
+SET columna = nuevo_valor
+WHERE condicion;
+
+---------------------------------------------ELIMINAR DATOS DE UNA TABLA
+
+DELETE FROM nombre_tabla
+WHERE condicion;
+
+---------------------------------------------CONSULTAR DATOS DE UNA TABLA
+
+SELECT columna1, columna2, ...
+FROM nombre_tabla
+WHERE condicion;
+
+---------------------------------------------CONSULTA AVANZADA CON ORDENAMIENTO Y LIMITACION
+
+SELECT columna1, columna2, ...
+FROM nombre_tabla
+WHERE condicion
+ORDER BY columna1 ASC
+LIMIT cantidad;
+
+---------------------------------------------CONSULTA CON FUNCIONES DE AGRAGACION(EJEM: SUMA)
+
+SELECT SUM(columna) AS suma_total
+FROM nombre_tabla;
+
+---------------------------------------------CONSULTA LLAVE FORANEA UNIDA CON LLAVE PRIMARIA.
+ select U.nombre, R.nombre from usuario as U, roles as R where U.Id_rol_Fk = R.Id_rol;
+
+---------------------------------------------CONSULTA UTILIZANDO ALIAS
+
+select U.Id_usuario,U.nombre, U.telefono, U.direccion, U.email, U.Id_rol_Fk,R.Id_rol, R.nombre from usuario as U, roles as R;
+
+
