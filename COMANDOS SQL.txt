@@ -110,9 +110,62 @@ FROM nombre_tabla;
 
 ---------------------------------------------CONSULTA LLAVE FORANEA UNIDA CON LLAVE PRIMARIA.
  select U.nombre, R.nombre from usuario as U, roles as R where U.Id_rol_Fk = R.Id_rol;
+SELECT E.nit, E.nombre, E.telefono, P.nombre, P.descripcion, P.marca, P.precio
+FROM empresas AS E
+INNER JOIN productos AS P ON E.Id_producto_fk = P.Id_producto; ------------> se utiliza inner join para consultas fk (no where)
+
 
 ---------------------------------------------CONSULTA UTILIZANDO ALIAS
 
 select U.Id_usuario,U.nombre, U.telefono, U.direccion, U.email, U.Id_rol_Fk,R.Id_rol, R.nombre from usuario as U, roles as R;
 
+---------------------------------------------DISTINCT
 
+SELECT DISTINCT departamento
+FROM empleados;
+
+La cláusula DISTINCT se utiliza para eliminar duplicados en los resultados de una consulta.
+
+---------------------------------------------BETWEEN
+
+SELECT columnas
+FROM tabla
+WHERE columna BETWEEN valor_minimo AND valor_maximo;
+
+La cláusula BETWEEN se utiliza en SQL para verificar si un valor se encuentra dentro de un rango específico. Puedes usarlo en condiciones de búsqueda para seleccionar registros que cumplan con ciertos criterios de rango.
+
+---------------------------------------------ORDER BY
+
+SELECT nombre, apellido
+FROM empleados
+ORDER BY apellido ASC, nombre ASC;
+
+La cláusula ORDER BY se utiliza en SQL para ordenar los resultados de una consulta en función de una o más columnas. Puedes ordenar los resultados en orden ascendente (de menor a mayor) o descendente (de mayor a menor) según los valores de las columnas especificadas.
+
+---------------------------------------------COUNT - SUM - GROUP BY
+
+select count(nombre) as valor, nombre from usuario group by nombre;
+select SUM(precio) as suma from productos group by (precio);
+
+La función de agregación COUNT() en SQL se utiliza para contar el número de filas en un conjunto de resultados que cumple con ciertos criterios. Puedes usar COUNT() para determinar cuántos registros hay en una tabla que coinciden con una condición específica.
+
+SELECT COUNT(columna)
+FROM tabla
+WHERE condicion;
+
+SELECT COUNT(*)
+FROM empleados
+WHERE salario > 50000;
+
+La cláusula GROUP BY se utiliza en SQL para agrupar filas en base a los valores de una o más columnas y aplicar funciones de agregación, como SUM, COUNT, AVG, etc., a cada grupo resultante. Esta cláusula es útil cuando deseas realizar cálculos sobre grupos de registros que comparten un valor común en una columna.
+
+SELECT columna1, columna2, ..., función_agregación(columna)
+FROM tabla
+GROUP BY columna1, columna2, ...;
+
+
+---------------------------------------------LIKE
+
+select nombre from usuario where nombre like "maria";--> "m" --> "s" "%m"=temrinan en m --> "m%"= comienza en m --> "%m%"=empieza y termina en m
+
+consultar el usi del IN y el HAVING
