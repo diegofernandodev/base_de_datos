@@ -34,18 +34,18 @@ INSERT INTO Regimen_Tributacion (Nombre_Regimen) VALUES
     ('Especial');
     
 -- Insertar usuarios
-INSERT INTO Usuarios (Tipo_Documento_Fk, Numero_Documento, Nombre, Apellidos, Telefono, Direccion, Email, Nombre_Usuario, Contraseña, Id_Rol_Fk) VALUES
-    (1, '123456789', 'Juan', 'Pérez', '1234567890', 'Calle 123', 'juan@email.com', 'juanito', 'hashed_password', 1),
-    (2, '987654321', 'Ana', 'López', '9876543210', 'Avenida 456', 'ana@email.com', 'anita', 'hashed_password', 2),
-    (3, '456789012', 'Carlos', 'Gómez', '4567890120', 'Carrera 789', 'carlos@email.com', 'carlitos', 'hashed_password', 3);
+INSERT INTO Usuarios (Tipo_Documento, Numero_Documento, Nombre, Apellidos, Telefono, Direccion, Email, Nombre_Usuario, Contraseña, Id_Rol_Fk) VALUES
+    (CC, '123456789', 'Juan', 'Pérez', '1234567890', 'Calle 123', 'juan@email.com', 'juanito', 'hashed_password', 1),
+    (NIT, '987654321', 'Ana', 'López', '9876543210', 'Avenida 456', 'ana@email.com', 'anita', 'hashed_password', 2),
+    (NIT, '456789012', 'Carlos', 'Gómez', '4567890120', 'Carrera 789', 'carlos@email.com', 'carlitos', 'hashed_password', 3);
 
 -- Insertar terceros 
-INSERT INTO Terceros (Id_Tipo_Doc_Fk, Numero_Documento, Nombre, Apellido, Razon_Social, Id_Regimen_Fk, Direccion, Telefono, Email) VALUES
-    (2, '112233446', 'Empresa LMN', NULL, 'LMN S.A.', 2, 'Calle Nueva', '5552345678', 'contacto@lmn.com'),
-    (1, '223344556', 'Proveedor ABC', NULL, 'ABC Ltda.', 1, 'Avenida Principal', '5553456789', 'contacto@proveedorabc.com'),
-    (2, '334455667', 'Empresa XYZ', NULL, 'XYZ S.A.', 2, 'Carrera Central', '5554567890', 'contacto@xyzsa.com'),
-    (2, '112233445', 'Empresa ABC', NULL, 'ABC Ltda.', 2, 'Calle Principal', '5551234567', 'contacto@abc.com'),
-    (3, '998877665', 'Proveedor XYZ', NULL, 'XYZ S.A.', 1, 'Avenida Central', '5559876543', 'contacto@xyz.com');
+INSERT INTO Terceros (Tipo_Documento, Numero_Documento, Nombre, Apellido, Razon_Social, Id_Regimen_Fk, Direccion, Telefono, Email) VALUES
+    (NIT, '112233446', 'Empresa LMN', NULL, 'LMN S.A.', 2, 'Calle Nueva', '5552345678', 'contacto@lmn.com'),
+    (NIT, '223344556', 'Proveedor ABC', NULL, 'ABC Ltda.', 1, 'Avenida Principal', '5553456789', 'contacto@proveedorabc.com'),
+    (NIT, '334455667', 'Empresa XYZ', NULL, 'XYZ S.A.', 2, 'Carrera Central', '5554567890', 'contacto@xyzsa.com'),
+    (NIT, '112233445', 'Empresa ABC', NULL, 'ABC Ltda.', 2, 'Calle Principal', '5551234567', 'contacto@abc.com'),
+    (NIT, '998877665', 'Proveedor XYZ', NULL, 'XYZ S.A.', 1, 'Avenida Central', '5559876543', 'contacto@xyz.com');
     
 -- Insertar Tipo_Registros
 INSERT INTO Tipo_Registro (nombre) VALUES ('Ingreso'),('Egreso');
@@ -76,7 +76,7 @@ INSERT INTO Eventos (Titulo, Fecha_Inicio, Fecha_Final, Descripcion, Ubicacion, 
     ('Entrega de Suministros', '2023-08-05 11:00:00', '2023-08-05 12:30:00', 'Entrega de suministros de papelería a la oficina principal.', 'Oficina Principal', 'https://calendar.google.com/event?id=lmn789', 3);
 
 -- Insertar datos en la tabla Empresas
-INSERT INTO Empresas (Id_Tipo_Doc_Fk, Numero_Documento, Nombre_Empresa, Direccion, Telefono, Email)
+INSERT INTO Empresas (Tipo_Documento, Numero_Documento, Nombre_Empresa, Direccion, Telefono, Email)
 VALUES
   (1, '123456789', 'Empresa A', 'Dirección A', '1234567890', 'empresaA@example.com'),
   (2, '987654321', 'Empresa B', 'Dirección B', '9876543210', 'empresaB@example.com'),

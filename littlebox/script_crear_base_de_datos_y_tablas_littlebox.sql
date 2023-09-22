@@ -17,8 +17,10 @@ CREATE TABLE Regimen_Tributacion (
 -- Tabla Empresas
 CREATE TABLE Empresas (
   Id_Empresa INT AUTO_INCREMENT PRIMARY KEY,
-  Id_Tipo_Doc_Fk INT NOT NULL,
+  
+  Tipo_Documento VARCHAR(200) NOT NULL
   Numero_Documento VARCHAR(200) NOT NULL,
+  Regimen_Tributario VARCHAR(200) NOT NULL
   Nombre_Empresa VARCHAR(200) NOT NULL,
   Direccion VARCHAR(200) NOT NULL,
   Telefono VARCHAR(200) NOT NULL,
@@ -35,7 +37,8 @@ CREATE TABLE Roles (
 -- Tabla usuarios
 CREATE TABLE Usuarios (
     Id_Usuario INT AUTO_INCREMENT PRIMARY KEY,
-    Tipo_Documento_Fk INT NOT NULL,
+    
+    Tipo_Documento VARCHAR(200) NOT NULL
     Numero_Documento VARCHAR(200) NOT NULL,
     Nombre VARCHAR(200) NOT NULL,
     Apellidos VARCHAR(200) NOT NULL,
@@ -52,8 +55,10 @@ CREATE TABLE Usuarios (
 -- Tabla terceros
 CREATE TABLE Terceros (
     Id_Tercero INT AUTO_INCREMENT PRIMARY KEY,
-    Id_Tipo_Doc_Fk INT,
+    
+    Tipo_Documento VARCHAR(200) NOT NULL
     Numero_Documento VARCHAR(200),
+    Regimen_Tributario VARCHAR(200) NOT NULL
     Nombre VARCHAR(200),
     Apellido VARCHAR(200),
     Razon_Social VARCHAR(200),
